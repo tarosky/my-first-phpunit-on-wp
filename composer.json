@@ -1,0 +1,53 @@
+{
+    "name": "tarosky/my-first-phpunit-on-wp",
+    "description": "WordPressでユニットテストを学ぶためのサンプルプラグイン",
+    "type": "wordpress-plugin",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Tarosky",
+            "email": "info@tarosky.co.jp",
+            "homepage": "https://tarosky.co.jp/"
+        }
+    ],
+    "keywords": [
+        "wordpress",
+        "phpunit",
+        "unit-testing",
+        "learning",
+        "tutorial"
+    ],
+    "require": {
+        "php": ">=8.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6",
+        "yoast/phpunit-polyfills": "^1.1",
+        "brain/monkey": "^2.6",
+        "mockery/mockery": "^1.6"
+    },
+    "autoload": {
+    },
+    "autoload-dev": {
+    },
+    "scripts": {
+        "install-wp-tests": [
+            "bash bin/install-wp-tests.sh wordpress_test root '' localhost latest"
+        ],
+        "test": [
+            "phpunit"
+        ],
+        "test-coverage": [
+            "phpunit --coverage-html coverage"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
