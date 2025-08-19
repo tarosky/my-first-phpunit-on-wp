@@ -86,7 +86,15 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-interaction
 
     - name: Check PHP syntax
-      run: find . -name "*.php" -not -path "./vendor/*" -not -path "./wordpress/*" -exec php -l {} \; | grep -v "No syntax errors"
+      run: |
+        echo "Checking PHP syntax for all PHP files..."
+        find . -name "*.php" -not -path "./vendor/*" -not -path "./wordpress/*" -print0 | xargs -0 -n1 php -l
+        if [ $? -eq 0 ]; then
+          echo "✅ All PHP files have valid syntax"
+        else
+          echo "❌ PHP syntax errors found"
+          exit 1
+        fi
 
     - name: Run PHPCS lint checks
       run: composer lint
