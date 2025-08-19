@@ -46,7 +46,7 @@ npm test
 ### Step 3以降: WordPress特有の機能
 今後追加予定：投稿操作、フック、データベース処理など
 
-## ファイル構成と学習資料
+## ファイル構成
 
 ```
 my-first-phpunit-on-wp/
@@ -58,13 +58,16 @@ my-first-phpunit-on-wp/
 │   │   └── TestProcessor.php      # 抽象クラステスト用具象実装
 │   ├── mfpow-basic-test.php       # 基本関数テスト
 │   ├── mfpow-calculator-test.php  # クラステスト例
-│   └── mfpow-processor-test.php   # 抽象クラステスト例
+│   ├── mfpow-processor-test.php   # 抽象クラステスト例
+│   ├── mfpow-hooks-test.php       # WordPressフックテスト
+│   └── mfpow-post-analyzer-test.php # データベース操作テスト
 ├── includes/
-│   └── functions.php              # 基本関数群
-└── 詳細ドキュメント/
-    ├── LEARNING_PLAN.md           # 体系的な学習計画
-    ├── WORDPRESS_UNIT_TESTING_BASICS.md # 基本概念の詳細解説
-    └── STEP_BY_STEP_GUIDE.md      # 実践的なコーディング演習
+│   ├── functions.php              # 基本関数群
+│   ├── hooks.php                  # WordPressフック処理
+│   └── post-analyzer.php          # 投稿解析・DB操作
+└── docs/
+    ├── WORDPRESS_TEST_COVERAGE_GUIDE.md    # カバレッジ詳細ガイド
+    └── WORDPRESS_DATABASE_TESTING_GUIDE.md # DB操作テストガイド
 ```
 
 ## 現在のテスト例
@@ -130,7 +133,7 @@ npm run coverage:text
 - `npm run coverage` - 詳細HTMLレポート生成
 - `npm run coverage:xml` - CI/CD用XML形式
 
-詳細は **[テストカバレッジガイド](WORDPRESS_TEST_COVERAGE_GUIDE.md)** をご覧ください。
+詳細は **[テストカバレッジガイド](docs/WORDPRESS_TEST_COVERAGE_GUIDE.md)** をご覧ください。
 
 ## 学習のポイント
 
@@ -156,11 +159,10 @@ npm run coverage:text
 
 ## 詳細情報
 
-各トピックの詳細は以下のドキュメントを参照してください：
+WordPressテストの詳細ガイド：
 
-- **[学習計画](LEARNING_PLAN.md)**: 段階的な学習ロードマップ
-- **[基本概念](WORDPRESS_UNIT_TESTING_BASICS.md)**: WordPressユニットテストの基礎
-- **[実践ガイド](STEP_BY_STEP_GUIDE.md)**: ハンズオン形式の演習
+- **[テストカバレッジガイド](docs/WORDPRESS_TEST_COVERAGE_GUIDE.md)**: カバレッジの設定と活用方法
+- **[データベーステストガイド](docs/WORDPRESS_DATABASE_TESTING_GUIDE.md)**: WordPress DB操作のテスト手法
 
 ## ライセンス
 
