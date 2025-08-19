@@ -1,5 +1,11 @@
 # My First PHPUnit on WordPress
 
+![CI](https://github.com/tarosky/my-first-phpunit-on-wp/workflows/Test%20and%20Coverage/badge.svg)
+[![codecov](https://codecov.io/gh/tarosky/my-first-phpunit-on-wp/branch/main/graph/badge.svg)](https://codecov.io/gh/tarosky/my-first-phpunit-on-wp)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![PHP](https://img.shields.io/badge/PHP-8.2%2B-blue.svg)](https://php.net/)
+[![WordPress](https://img.shields.io/badge/WordPress-6.3%2B-blue.svg)](https://wordpress.org/)
+
 WordPressでユニットテストを学ぶためのサンプルプラグインです。
 
 ## 概要
