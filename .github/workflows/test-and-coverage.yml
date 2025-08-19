@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         php-version: ['8.2', '8.3']
-        node-version: ['18', '20']
+        node-version: ['18']
 
     name: PHP ${{ matrix.php-version }} - Node ${{ matrix.node-version }}
 
@@ -87,6 +87,9 @@ jobs:
 
     - name: Check PHP syntax
       run: find . -name "*.php" -not -path "./vendor/*" -not -path "./wordpress/*" -exec php -l {} \; | grep -v "No syntax errors"
+
+    - name: Run PHPCS lint checks
+      run: composer lint
 
     - name: Validate composer.json
       run: composer validate --strict

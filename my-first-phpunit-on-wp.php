@@ -17,7 +17,7 @@
 
 // 直接アクセスを防ぐ
 if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+	exit;
 }
 
 // 定数定義
@@ -40,5 +40,5 @@ mfpow_register_post_analyzer_hooks();
 
 // デバッグ情報を管理画面フッターに表示（開発時のみ）
 if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-    add_filter( 'admin_footer_text', 'mfpow_admin_footer_debug' );
+	add_filter( 'admin_footer_text', 'mfpow_admin_footer_debug' );
 }
