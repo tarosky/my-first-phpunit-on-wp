@@ -77,8 +77,8 @@ npm test
 
 ```bash
 # WordPress環境
-npm run start                  # 環境起動
-npm run stop                   # 環境停止
+npm start                  # 環境起動
+npm stop                   # 環境停止
 
 # テスト実行
 npm test                       # 全テスト実行

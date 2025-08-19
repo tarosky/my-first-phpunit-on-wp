@@ -88,7 +88,7 @@ function mfpow_admin_footer_debug( $footer_text ) {
  * @return bool フィルターが登録されている場合true
  */
 function mfpow_is_blogname_filter_registered() {
-    return has_filter( 'bloginfo', 'mfpow_modify_blogname_filter' );
+    return (bool) has_filter( 'bloginfo', 'mfpow_modify_blogname_filter' );
 }
 
 /**

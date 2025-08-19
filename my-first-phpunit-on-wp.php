@@ -32,9 +32,11 @@ require_once __DIR__ . '/vendor/autoload.php';
 // 関数ファイルの読み込み
 require_once __DIR__ . '/includes/functions.php';
 require_once __DIR__ . '/includes/hooks.php';
+require_once __DIR__ . '/includes/post-analyzer.php';
 
 // フックの登録
 mfpow_register_hooks();
+mfpow_register_post_analyzer_hooks();
 
 // デバッグ情報を管理画面フッターに表示（開発時のみ）
 if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
