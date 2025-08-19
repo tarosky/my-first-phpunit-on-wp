@@ -82,9 +82,49 @@ npm stop                   # 環境停止
 
 # テスト実行
 npm test                       # 全テスト実行
+npm run coverage:text          # テキスト形式カバレッジ
+npm run coverage               # HTML形式カバレッジレポート
+npm run coverage:xml           # XML形式カバレッジ（CI/CD用）
+
+# 従来のComposer方式
 composer test                  # PHPUnit直接実行
 composer run-script test-coverage # カバレッジ付きテスト
 ```
+
+### テストカバレッジについて
+
+テストカバレッジを使用するには**Xdebug**が必要です：
+
+```bash
+# カバレッジの確認（要Xdebug）
+npm run coverage:text
+```
+
+**カバレッジ機能が実際に動作します！**
+
+```bash
+# テキスト形式でカバレッジ確認（推奨）
+npm run coverage:text
+
+# 実行結果例：
+# Code Coverage Report:
+#  Summary:
+#   Classes: 50.00% (1/2)
+#   Methods: 81.82% (9/11)
+#   Lines:   63.16% (60/95)
+```
+
+**カバレッジ機能について:**
+- ✅ 完全に動作（wp-env --xdebug + XDEBUG_MODE=coverage）
+- ✅ HTMLレポート生成: `./coverage/html/index.html`
+- ✅ XML形式レポート: `./coverage/clover.xml`
+
+**コマンド一覧:**
+- `npm run coverage:text` - ターミナルでの簡易表示
+- `npm run coverage` - 詳細HTMLレポート生成
+- `npm run coverage:xml` - CI/CD用XML形式
+
+詳細は **[テストカバレッジガイド](WORDPRESS_TEST_COVERAGE_GUIDE.md)** をご覧ください。
 
 ## 学習のポイント
 
