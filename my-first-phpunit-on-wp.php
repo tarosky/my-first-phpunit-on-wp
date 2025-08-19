@@ -31,3 +31,12 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 // 関数ファイルの読み込み
 require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/includes/hooks.php';
+
+// フックの登録
+mfpow_register_hooks();
+
+// デバッグ情報を管理画面フッターに表示（開発時のみ）
+if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+    add_filter( 'admin_footer_text', 'mfpow_admin_footer_debug' );
+}

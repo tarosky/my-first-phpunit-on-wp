@@ -27,8 +27,14 @@
         "mockery/mockery": "^1.6"
     },
     "autoload": {
+        "psr-4": {
+            "MyFirstPHPUnitOnWP\\": "src/"
+        }
     },
     "autoload-dev": {
+        "psr-4": {
+            "MyFirstPHPUnitOnWP\\Tests\\": "tests/src/"
+        }
     },
     "scripts": {
         "install-wp-tests": [
