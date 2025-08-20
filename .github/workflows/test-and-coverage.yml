@@ -7,6 +7,18 @@ on:
     branches: [ main ]
 
 jobs:
+
+  # See https://github.com/tarosky/workflows/wiki#phpunit
+  ts-test:
+    strategy:
+      matrix:
+        php: [ '8.2', '8.3' ]
+        wp: [ 'latest', '6.8' ]
+    uses: tarosky/workflows/.github/workflows/wp-unit-test.yml@main
+    with:
+        php_version: ${{ matrix.php }}
+        wp_version: ${{ matrix.wp }}
+
   test:
     runs-on: ubuntu-latest
 

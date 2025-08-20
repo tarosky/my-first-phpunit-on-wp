@@ -196,6 +196,7 @@ WordPressテストの詳細ガイド：
 
 - **[テストカバレッジガイド](docs/WORDPRESS_TEST_COVERAGE_GUIDE.md)**: カバレッジの設定と活用方法
 - **[データベーステストガイド](docs/WORDPRESS_DATABASE_TESTING_GUIDE.md)**: WordPress DB操作のテスト手法
+- **[CI/CD環境](https://github.com/tarosky/workflows/wiki#phpunit)**: WordPressのテスト環境整備
 
 ## ライセンス
 
