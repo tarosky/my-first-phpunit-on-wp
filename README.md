@@ -48,6 +48,12 @@ npm test
 - **データベース操作テスト**: 投稿メタデータとキーワードカウント機能
 - **統合テスト**: WordPressファクトリーパターンの活用
 
+### Step 4: WordPress Ajax機能
+- **Ajax処理テスト**: `wp_ajax_` と `wp_ajax_nopriv_` フックのテスト
+- **セキュリティテスト**: nonce検証とエラーハンドリング
+- **JSON レスポンステスト**: `wp_send_json_success/error` の動作検証
+- **統合Ajax処理**: 複数のAjax機能の連携テスト
+
 ## ファイル構成
 
 ```
@@ -62,11 +68,13 @@ my-first-phpunit-on-wp/
 │   ├── mfpow-calculator-test.php  # クラステスト例
 │   ├── mfpow-processor-test.php   # 抽象クラステスト例
 │   ├── mfpow-hooks-test.php       # WordPressフックテスト
-│   └── mfpow-post-analyzer-test.php # データベース操作テスト
+│   ├── mfpow-post-analyzer-test.php # データベース操作テスト
+│   └── mfpow-ajax-test.php        # Ajax機能テスト
 ├── includes/
 │   ├── functions.php              # 基本関数群
 │   ├── hooks.php                  # WordPressフック処理
-│   └── post-analyzer.php          # 投稿解析・DB操作
+│   ├── post-analyzer.php          # 投稿解析・DB操作
+│   └── ajax.php                   # Ajax処理機能
 └── docs/
     ├── WORDPRESS_TEST_COVERAGE_GUIDE.md    # カバレッジ詳細ガイド
     └── WORDPRESS_DATABASE_TESTING_GUIDE.md # DB操作テストガイド
@@ -106,6 +114,14 @@ npm test
 - **WordPressファクトリー**: `$this->factory->post->create()`の活用
 - **統合テスト**: `save_post`フックとの連携動作
 - **エラーハンドリング**: 不正データに対する適切な処理
+
+#### 6. Ajax機能テスト (`mfpow-ajax-test.php`)
+- **Ajax ハンドラー登録**: `wp_ajax_` / `wp_ajax_nopriv_` フックの確認
+- **計算Ajax処理**: 四則演算のAjax処理とレスポンス検証
+- **セキュリティテスト**: nonce検証、無効な入力値処理
+- **データベースAjax**: 投稿数取得のAjax処理
+- **エラーハンドリング**: ゼロ除算、無効演算子等の例外処理
+- **統合Ajax処理**: 複数Ajax処理の連携と独立性確認
 
 ## コマンド
 
@@ -196,7 +212,7 @@ WordPressテストの詳細ガイド：
 
 - **[テストカバレッジガイド](docs/WORDPRESS_TEST_COVERAGE_GUIDE.md)**: カバレッジの設定と活用方法
 - **[データベーステストガイド](docs/WORDPRESS_DATABASE_TESTING_GUIDE.md)**: WordPress DB操作のテスト手法
-- **[CI/CD環境](https://github.com/tarosky/workflows/wiki#phpunit)**: WordPressのテスト環境整備
+- **[Ajax テストガイド](docs/WORDPRESS_AJAX_TESTING_GUIDE.md)**: WordPress Ajax処理のテスト手法とセキュリティ
 
 ## ライセンス
 

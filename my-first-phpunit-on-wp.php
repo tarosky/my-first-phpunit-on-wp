@@ -33,10 +33,12 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/includes/functions.php';
 require_once __DIR__ . '/includes/hooks.php';
 require_once __DIR__ . '/includes/post-analyzer.php';
+require_once __DIR__ . '/includes/ajax.php';
 
 // フックの登録
 mfpow_register_hooks();
 mfpow_register_post_analyzer_hooks();
+mfpow_register_ajax_hooks();
 
 // デバッグ情報を管理画面フッターに表示（開発時のみ）
 if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
