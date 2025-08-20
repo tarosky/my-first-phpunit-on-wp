@@ -87,10 +87,11 @@ function mfpow_handle_ajax_calculate() {
 			$result = $num1 * $num2;
 			break;
 		case 'divide':
-			if ( 0 === $num2 ) {
+			if ( 0 === $num2 || abs( $num2 ) < PHP_FLOAT_EPSILON ) {
 				wp_send_json_error( array(
 					'message' => 'Division by zero is not allowed.',
 				) );
+				return;
 			}
 			$result = $num1 / $num2;
 			break;
