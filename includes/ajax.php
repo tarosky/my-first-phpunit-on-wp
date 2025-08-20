@@ -34,7 +34,7 @@ function mfpow_register_ajax_hooks() {
 	// ログインユーザー向けAjaxハンドラー
 	add_action( 'wp_ajax_mfpow_calculate', 'mfpow_handle_ajax_calculate' );
 	add_action( 'wp_ajax_mfpow_get_post_count', 'mfpow_handle_ajax_get_post_count' );
-	
+
 	// 非ログインユーザー向けAjaxハンドラー（公開機能）
 	add_action( 'wp_ajax_nopriv_mfpow_calculate', 'mfpow_handle_ajax_calculate' );
 	add_action( 'wp_ajax_nopriv_mfpow_get_post_count', 'mfpow_handle_ajax_get_post_count' );
@@ -60,8 +60,8 @@ function mfpow_handle_ajax_calculate() {
 	}
 
 	// 入力値の取得と検証
-	$number1 = sanitize_text_field( $_POST['number1'] ?? '' );
-	$number2 = sanitize_text_field( $_POST['number2'] ?? '' );
+	$number1   = sanitize_text_field( $_POST['number1'] ?? '' );
+	$number2   = sanitize_text_field( $_POST['number2'] ?? '' );
 	$operation = sanitize_text_field( $_POST['operation'] ?? '' );
 
 	// 数値の検証
@@ -71,8 +71,8 @@ function mfpow_handle_ajax_calculate() {
 		) );
 	}
 
-	$num1 = floatval( $number1 );
-	$num2 = floatval( $number2 );
+	$num1   = floatval( $number1 );
+	$num2   = floatval( $number2 );
 	$result = 0;
 
 	// 計算処理
@@ -87,7 +87,7 @@ function mfpow_handle_ajax_calculate() {
 			$result = $num1 * $num2;
 			break;
 		case 'divide':
-			if ( 0 == $num2 ) {
+			if ( 0 === $num2 ) {
 				wp_send_json_error( array(
 					'message' => 'Division by zero is not allowed.',
 				) );
@@ -102,7 +102,7 @@ function mfpow_handle_ajax_calculate() {
 
 	// 成功レスポンス
 	wp_send_json_success( array(
-		'result' => $result,
+		'result'      => $result,
 		'calculation' => $num1 . ' ' . $operation . ' ' . $num2 . ' = ' . $result,
 	) );
 }
@@ -143,9 +143,9 @@ function mfpow_handle_ajax_get_post_count() {
 	$response_data = array(
 		'post_type' => $post_type,
 		'published' => $counts->publish ?? 0,
-		'draft' => $counts->draft ?? 0,
-		'private' => $counts->private ?? 0,
-		'total' => ( $counts->publish ?? 0 ) + ( $counts->draft ?? 0 ) + ( $counts->private ?? 0 ),
+		'draft'     => $counts->draft ?? 0,
+		'private'   => $counts->private ?? 0,
+		'total'     => ( $counts->publish ?? 0 ) + ( $counts->draft ?? 0 ) + ( $counts->private ?? 0 ),
 	);
 
 	// 成功レスポンス
@@ -180,7 +180,7 @@ function mfpow_enqueue_ajax_scripts() {
 	// Ajax用のJavaScript変数を設定
 	wp_localize_script( 'jquery', 'mfpow_ajax', array(
 		'ajax_url' => admin_url( 'admin-ajax.php' ),
-		'nonce' => mfpow_get_ajax_nonce(),
+		'nonce'    => mfpow_get_ajax_nonce(),
 	) );
 }
 
@@ -196,11 +196,11 @@ function mfpow_enqueue_ajax_scripts() {
  */
 function mfpow_is_ajax_handler_registered( $action, $include_nopriv = false ) {
 	$registered = has_action( 'wp_ajax_' . $action );
-	
+
 	if ( $include_nopriv ) {
 		$registered = $registered && has_action( 'wp_ajax_nopriv_' . $action );
 	}
-	
+
 	return (bool) $registered;
 }
 
@@ -220,6 +220,6 @@ function mfpow_validate_ajax_response( $response_data ) {
 
 	// 成功レスポンスまたはエラーレスポンスの形式をチェック
 	$has_success = isset( $response_data['success'] ) && isset( $response_data['data'] );
-	
+
 	return $has_success;
 }
